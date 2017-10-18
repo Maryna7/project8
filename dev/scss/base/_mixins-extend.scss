@@ -1,0 +1,67 @@
+
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+%clearfix {
+ &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+
+@mixin displayvertical ($display, $vertical) {
+  display: $display;
+  vertical-align: $vertical;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin fontsize-lineheight($fontsize, $lineheight) {
+  font-size: $fontsize;
+  line-height: $lineheight;
+}
+
+@mixin fontface ($fontfamily, $filename, $font-weight, $font-style) {
+  @font-face{
+    font-family: "#{$fontfamily}";
+    src: url('../fonts/#{$filename}.eot');
+    src: url('../fonts/#{$filename}.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/#{$filename}.woff2') format('woff2'),
+    url('../fonts/#{$filename}.woff') format('woff'),
+    url('../fonts/#{$filename}.ttf') format('truetype'),
+    url('../fonts/#{$filename}.svg#{$filename}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &::-moz-placeholder {opacity: 1; @content}
+  &:-moz-placeholder {@content}
+  &:-ms-input-placeholder {@content}
+  &.placeholder {@content}
+}
+
+$animation-speed: .3s !default;
+
+@mixin animate($properties, $duration: $animation-speed, $easing: ease-in-out) {
+  $list:();
+  @each $prop in $properties {
+    $str: #{$prop} #{$animation-speed} #{$easing};
+    $list: append($list, $str, comma);
+  }
+  transition: $list;
+}

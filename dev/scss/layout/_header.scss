@@ -1,0 +1,129 @@
+#header{
+	background: $green;
+	padding: 18px 0 17px;
+
+	.container{
+		@extend %clearfix;
+	}
+}
+
+.header-logo{
+	float: left;
+
+	@include media('<=tablet') {
+		padding-top: 8px;
+	}
+
+	a{
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	img{
+		vertical-align: top;
+	}
+}
+
+.header-navbar{
+	float: right;
+
+	.header-list{
+		@extend %listreset;
+
+		@include media('<=tablet') {
+			position: absolute;
+			top: 52px;
+			left: 0;
+			right: 0;
+			z-index: 1;
+			visibility: hidden;
+			opacity: 0;
+			padding-bottom: 10px;
+			background: $green;
+			text-align: center;
+			transition: opacity, .4s;
+		}
+	}
+
+	li{
+		display: inline-block;
+		vertical-align: top;
+		text-transform: uppercase;
+		padding: 0 0 0 10px;
+		font-size: 12px;
+		font-weight: 800;
+
+		@include media('<=tablet') {
+			display: block;
+			padding: 5px 10px;
+		}
+	}
+
+	a{
+		color: $white;
+	}
+
+	.open-menu{
+		display: none;
+		width: 40px;
+		height: 36px;
+		background: $yellow;
+		position: relative;
+		border-radius: 5px;
+
+		@include media('<=tablet') {
+			display: block;
+		}
+
+		&:after,
+		&:before,
+		span{
+			position: absolute;
+			top: 17px;
+			left: 5px;
+			right: 5px;
+			text-indent:-9999px;
+			background: $white;
+			height: 3px;
+			transition-property: transform, top;
+			transition-duration: .4s;
+		}
+
+		&:before{
+			content: "";
+			top: 8px;
+		}
+
+		&:after{
+			content: "";
+			top: 26px;
+		}
+	}
+}
+
+.show{
+	.header-list{
+		@include media('<=tablet') {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	.open-menu{
+		span{
+			display: none;
+		}
+
+		&:before,
+		&:after{
+			transform: rotate(45deg);
+			transition-property: transform, top;
+			transition-duration: .4s;
+			top: 17px;
+		}
+
+		&:after{
+			transform: rotate(-45deg);
+		}
+	}
+}

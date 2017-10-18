@@ -1,0 +1,103 @@
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+* {max-height: 1000000px;}
+
+body {
+	color: $text-color;
+	background: $background-color;
+	font: #{$font-size}/#{$line-height} $font-sans-serif;
+	min-width: $min-width;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+p {
+	margin: 0 0 15px;
+}
+
+a {
+	color: $gray;
+	transition: opacity 0.3s ease-in-out;
+	text-decoration: none;
+	
+	&:hover{
+		opacity: .7;
+	}
+}
+
+h1,h2,h3,h4,h5,h6{
+	margin: 0 0 0.1em;
+	font-weight: 800;
+}
+h1{
+	font-size: 46px;
+	color: $green;
+
+	@include media('<=desktop') {
+		font-size: 40px;	
+		line-height: 1.6;	
+	}	
+
+	@include media('<=tablet') {
+		font-size: 36px;	
+		line-height: 1.4;	
+	}	
+}
+h2{
+	font-size: 16px;
+	color: $gray;
+
+	@include media('<tablet') {
+		font-size: 14px;
+	}
+}
+h3{
+	font-size: 15px;
+}
+h4{
+	font-size: 14px;
+}
+h5{
+	font-size: 13px;
+}
+h6{
+	font-size: 12px;
+}
+
+
+#wrapper{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	margin:0 auto;
+	text-align: left;
+}
+
+.container{
+	width: 100%;
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.btn{
+	display: inline-block;
+	vertical-align: top;
+	min-width: 196px;
+	padding: 0 15px;
+	line-height: 47px;
+	font-size: 14px;
+	font-weight: 800;
+	text-align: center;
+	text-transform: uppercase;
+	color: $black;
+	background: $yellow;
+}
